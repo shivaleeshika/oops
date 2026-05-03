@@ -100,34 +100,66 @@ public class Q26 {
 ### Q2 – Employee → Manager & Engineer (C++)
 
 ```cpp
+// PC_2: Inheritance - Employee base class, Manager and Engineer derived classes
 #include <iostream>
+#include <string>
 using namespace std;
-
+// Base class
 class Employee {
+protected:
+    string name;
+    int empID;
+    double salary;
 public:
-    string name; int id; float salary;
-    void input() { cout << "Name: "; cin >> name; cout << "ID: "; cin >> id; cout << "Salary: "; cin >> salary; }
-    void display() { cout << "Name: " << name << ", ID: " << id << ", Salary: " << salary << endl; }
-};
-
+    void accept() {
+        cout << "Enter Name: "; cin >> name;
+        cout << "Enter Employee ID: "; cin >> empID;
+        cout << "Enter Salary: "; cin >> salary;
+    }
+    void display() {
+        cout << "Name: " << name << ", ID: " << empID << ", Salary: " << salary << endl;
+    }
+};// Derived class 1
 class Manager : public Employee {
+    string department;
+    int subordinates;
 public:
-    string dept; int subordinates;
-    void input() { Employee::input(); cout << "Dept: "; cin >> dept; cout << "Subordinates: "; cin >> subordinates; }
-    void display() { Employee::display(); cout << "Dept: " << dept << ", Subordinates: " << subordinates << endl; }
-};
-
+    void accept() {
+        Employee::accept();
+        cout << "Enter Department: "; cin >> department;
+        cout << "Enter Number of Subordinates: "; cin >> subordinates;
+    }
+    void display() {
+        Employee::display();
+        cout << "Department: " << department << ", Subordinates: " << subordinates << endl;
+    }
+};// Derived class 2
 class Engineer : public Employee {
+    string projectName;
+    string language;
 public:
-    string project, language;
-    void input() { Employee::input(); cout << "Project: "; cin >> project; cout << "Language: "; cin >> language; }
-    void display() { Employee::display(); cout << "Project: " << project << ", Language: " << language << endl; }
+    void accept() {
+        Employee::accept();
+        cout << "Enter Project Name: "; cin >> projectName;
+        cout << "Enter Programming Language: "; cin >> language;
+    }
+    void display() {
+        Employee::display();
+        cout << "Project: " << projectName << ", Language: " << language << endl;
+    }
 };
-
 int main() {
-    Manager m; m.input(); m.display();
-    Engineer e; e.input(); e.display();
+    Manager m;
+    Engineer e;
+    cout << "--- Manager Details ---\n";
+    m.accept();
+    m.display();
+    cout << "\n--- Engineer Details ---\n";
+    e.accept();
+    e.display();
+    return 0;
 }
+
 ```
 
 ---
